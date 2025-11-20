@@ -127,8 +127,8 @@ test_that("sparse_add error handling", {
 
 
 test_that("sparse_sub logic covers all branches", {
-  v1 <- c(0, 10, 0, 5, 0)
-  v2 <- c(0, 2,  3, 5, 0) # Note: 5-5=0 (cancellation)
+  v1 <- c(0, 10, 0, 5, 0, 1, 0)
+  v2 <- c(0, 2,  3, 5, 0, 0, 1) # Note: 5-5=0 (cancellation)
   # Sub:  0, 8, -3, 0, 0
 
   x <- as(v1, "sparse_numeric")

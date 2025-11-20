@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/isaiahbenny/sparsevector/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/isaiahbenny/sparsevector/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/isaiahbenny/sparsevector/graph/badge.svg)](https://app.codecov.io/gh/isaiahbenny/sparsevector)
 <!-- badges: end -->
 
 The goal of sparsevector is to provide a memory-efficient S4 class (sparse_numeric) for handling sparse numeric vectors in R. By storing only non-zero values and their indices, it allows for efficient arithmetic operations (addition, subtraction, multiplication, cross-products) without expanding the vectors into their dense format.
