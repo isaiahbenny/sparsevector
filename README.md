@@ -1,0 +1,80 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# sparsevector
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+The goal of sparsevector is to provide a memory-efficient S4 class
+(sparse_numeric) for handling sparse numeric vectors in R. By storing
+only non-zero values and their indices, it allows for efficient
+arithmetic operations (addition, subtraction, multiplication,
+cross-products) without expanding the vectors into their dense format.
+
+## Installation
+
+You can install the development version of sparsevector like so:
+
+``` r
+devtools::install_github("isaiahbenny/sparsevector")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+library(sparsevector)
+## basic example code
+
+# 1. Create sparse vectors using the class constructor
+# Represents the vector: c(0, 5, 0, 0, 0, 3.2)
+x <- new("sparse_numeric", 
+         value = c(5, 3.2), 
+         pos = c(2L, 6L), 
+         length = 10L)
+
+# Represents the vector: c(1, 0, 2, 0, 0, 4)
+y <- new("sparse_numeric", 
+         value = c(1, 2, 4), 
+         pos = c(1L, 3L, 6L), 
+         length = 10L)
+
+# 2. Arithmetic Operations
+# Addition (returns sparse_numeric)
+sum_vec <- x + y
+show(sum_vec)
+#> sparse_numeric vector of length 10 
+#> with 4 non-zero entries.
+#>  [1] 1.0 5.0 2.0 0.0 0.0 7.2 0.0 0.0 0.0 0.0
+
+# Element-wise Multiplication (returns sparse_numeric)
+# Only non-zero where both x and y are non-zero (at position 6)
+prod_vec <- x * y
+show(prod_vec)
+#> sparse_numeric vector of length 10 
+#> with 1 non-zero entries.
+#>  [1]  0.0  0.0  0.0  0.0  0.0 12.8  0.0  0.0  0.0  0.0
+
+# Dot Product (returns numeric)
+dot_prod <- sparse_crossprod(x, y)
+print(dot_prod)
+#> [1] 12.8
+```
+
+Visualization You can visualize the overlapping non-zero elements of two
+sparse vectors using the plot() method. This plots position (x-axis) vs
+value (y-axis) for indices where both vectors are non-zero.
+
+``` r
+
+# Create overlapping vectors for demonstration
+v1 <- new("sparse_numeric", value = c(1, 2, 3, 4), pos = c(1L, 5L, 10L, 15L), length = 20L)
+v2 <- new("sparse_numeric", value = c(2, 5, 1, 9), pos = c(1L, 6L, 10L, 15L), length = 20L)
+
+plot(v1, v2)
+```
+
+<img src="man/figures/README-example2-1.png" width="100%" />
