@@ -65,9 +65,11 @@ print(dot_prod)
 #> [1] 12.8
 ```
 
-Visualization You can visualize the overlapping non-zero elements of two
-sparse vectors using the plot() method. This plots position (x-axis) vs
-value (y-axis) for indices where both vectors are non-zero.
+## Visualization
+
+You can visualize the overlapping non-zero elements of two sparse
+vectors using the plot() method. This plots position (x-axis) vs value
+(y-axis) for indices where both vectors are non-zero.
 
 ``` r
 
